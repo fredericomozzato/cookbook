@@ -24,10 +24,15 @@ feature "Usuário cria uma lista de receita" do
     login_as user, scope: :user
     visit root_path
     click_on "Minhas Listas"
-    click_on "Nova lista"
+    click_on "Nova Lista"
     fill_in "Nome", with: "Lista Teste"
-    click_on "Criar lista"
+    click_on "Criar Lista"
 
+    expect(RecipeList.all.count).to eq 1
+    expect(RecipeList.first.name).to eq "Lista Teste"
+    expect(RecipeList.first.user).to eq user
+    expect(page).to have_content "Lista criada com sucesso"
     expect(page).to have_content "Lista Teste"
+    expect(page).to have_content "Nenhuma receita"
   end
 end
