@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update]
 
   def show
+    @recipe_lists = current_user.recipe_lists
     @recipe = Recipe.find(params[:id])
   end
 
@@ -18,7 +19,7 @@ class RecipesController < ApplicationController
 
     if @recipe.save
       flash[:notice] = t('.success')
-      return redirect_to(@recipe) 
+      return redirect_to(@recipe)
     end
     flash.now[:alert] = t('.error')
     render :new

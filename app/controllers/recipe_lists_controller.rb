@@ -13,6 +13,18 @@ class RecipeListsController < ApplicationController
     redirect_to recipe_lists_path, notice: "Lista criada com sucesso"
   end
 
+  def update
+
+  end
+
+  def add_recipe
+    # debugger
+    @recipe_list = RecipeList.find(params[:recipe_list])
+    recipe = Recipe.find[:id]
+    @recipe_list.recipes << recipe
+    @recipe_list.save
+  end
+
   private
 
   def recipe_list_params
