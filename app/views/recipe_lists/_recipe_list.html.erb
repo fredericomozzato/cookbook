@@ -1,3 +1,10 @@
 <div>
-  
+  <dl>
+    <dt>Nome:</dt>
+    <dd><%= recipe_list.name %></dd>
+    <% if recipe_list.recipes.empty? %>
+      <p>Nenhuma receita</p>
+    <% else %>
+      <dt>Receitas:</dt>
+    <% end %>
 </div>
