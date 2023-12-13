@@ -20,7 +20,7 @@ class RecipeListsController < ApplicationController
   def add_recipe
     # debugger
     @recipe_list = RecipeList.find(params[:recipe_list])
-    recipe = Recipe.find[:id]
+    recipe = Recipe.find(params[:id])
     @recipe_list.recipes << recipe
     @recipe_list.save
   end

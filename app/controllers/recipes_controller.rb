@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update]
 
   def show
-    @recipe_lists = current_user.recipe_lists
+    @recipe_lists = current_user.recipe_lists if user_signed_in?
     @recipe = Recipe.find(params[:id])
   end
 

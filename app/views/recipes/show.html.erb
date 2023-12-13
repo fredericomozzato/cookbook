@@ -10,13 +10,14 @@
     <h4>Forma de preparo</h4>
     <p><%= @recipe.instructions%></p>
 
-    <div>
-      <h3>Adicionar à lista</h3>
-      <%= form_with url: add_recipe_recipe_list_path, method: :put do |f| %>
-        <%= f.collection_select :recipe_list, @recipe_lists, :id, :name %>
-        <%= f.submit "Adicionar" %>
-      <% end %>
-
-    </div>
+    <% if user_signed_in? %>
+      <div>
+        <h3>Adicionar à lista</h3>
+        <%= form_with url: add_recipe_recipe_list_path, method: :put do |f| %>
+          <%= f.collection_select :recipe_list, @recipe_lists, :id, :name %>
+          <%= f.submit "Adicionar" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
